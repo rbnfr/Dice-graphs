@@ -6,20 +6,23 @@ from random import randint
 import matplotlib.pyplot as plt
 
 points = ""
-possible_points = range(2,13)
 points_list = []
+faces = 20
+possible_points = range(2,(faces*2)+1)
 
-for i in range(10000):
-    scramble1 = randint(1,6)
-    scramble2 = randint(1,6)
+
+
+for i in range(1000):
+    scramble1 = randint(1,faces)
+    scramble2 = randint(1,faces)
     points = scramble1 + scramble2
     points_list.append(points)
     
 #print (*points_list, sep="-")
 
 fin = [ possible_points.index(i) for i in points_list]
-plt.hist(fin, bins=range(12), align="left", color="orange")
-plt.xticks(range(12), possible_points)
+plt.hist(fin, bins=range(faces*2), align="left", color="orange")
+plt.xticks(range(faces*2), possible_points)
 
 plt.xlabel("Results")
 plt.ylabel("Frequency")
