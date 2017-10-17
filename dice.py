@@ -1,26 +1,28 @@
 # -*- coding: utf-8 -*-
 """
-Editor de Spyder
-
-Este es un archivo temporal
+Author: Ruben
 """
 from random import randint
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 points = ""
-possible_points = [1,2,3,4,5,6]
+possible_points = range(2,13)
 points_list = []
 
-for i in range(100):
+for i in range(10000):
     scramble1 = randint(1,6)
     scramble2 = randint(1,6)
     points = scramble1 + scramble2
-    points_list[i] = points
+    points_list.append(points)
     
+#print (*points_list, sep="-")
 
-plt.hist(points_list, bins=range(11), align="left")
+fin = [ possible_points.index(i) for i in points_list]
+plt.hist(fin, bins=range(12), align="left", color="orange")
+plt.xticks(range(12), possible_points)
 
-plt.title("Dice results distribution")
-plt.xlabel("Points obtained")
-plt.ylabel("Repetitions")
+plt.xlabel("Results")
+plt.ylabel("Frequency")
 plt.show()
+
+
