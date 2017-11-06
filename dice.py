@@ -9,25 +9,39 @@ def main():
     from random import randint
     import matplotlib.pyplot as plt
 
-    points = ""
+    # PROGRAM VARIABLES
+    points = 0
     points_list = []
-    faces1 = 20
-    faces2 = 4
-    rolls = 100000
-    possible_points = range(2,(faces1+faces2)+1)
+    max_points = 0
 
+    # USER VARIABLES
+    rolls = 10000
+    dice_list = {
+        'D20': 20, 
+        'D4': 4,
+        'D6': 6,
+        'D5': 5
+        }    
 
+    # HISTOGRAM RANGE
+    min_points = len(dice_list)
 
+    for faces in dice_list.values():
+        max_points = max_points + faces
+
+    possible_points = range(min_points,max_points+1)
+
+    # GET DATA
     for i in range(rolls):
-        scramble1 = randint(1, faces1)
-        scramble2 = randint(1, faces2)
-        points = scramble1 + scramble2
-        points_list.append(points)   
-    #print (*points_list, sep="-")
+        points = 0
+        for dice in dice_list.values():
+            points = points +  randint(1, dice)
+        points_list.append(points)    
 
+    # BUILD GRAPH
     fin = [possible_points.index(i) for i in points_list]
-    plt.hist(fin, bins=range(faces1+faces2), align="left", color="orange")
-    plt.xticks(range(faces1+faces2), possible_points)
+    plt.hist(fin, bins=range(max_points), align="left", color="blue")
+    plt.xticks(range(max_points), possible_points)
 
     plt.xlabel("Results")
     plt.ylabel("Frequency")
