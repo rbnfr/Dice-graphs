@@ -40,7 +40,7 @@ def main():
 
     # BUILD GRAPH
     fin = [possible_points.index(i) for i in points_list]
-    plt.hist(fin, bins=range(max_points), align="left", color="blue")
+    plt.hist(fin, bins=range(max_points), align="left", color="blue", rwidth=0.8)
     plt.xticks(range(max_points), possible_points)
 
     plt.xlabel("Results")
