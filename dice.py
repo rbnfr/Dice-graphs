@@ -4,7 +4,7 @@ Author: Ruben
 """
 from random import randint
 import matplotlib.pyplot as plt
-import diceClass as dice
+import diceController as dice
 
 points = ""
 dices = 3
@@ -26,12 +26,12 @@ for i in range(10000):
     
 #print (*points_list, sep="-")
 
-#fin = [ possible_points.index(i) for i in points_list]
-#plt.hist(fin, bins=range(12), align="left", color="orange")
-#plt.xticks(range(12), possible_points)
+fin = [ possible_points.index(i) for i in points_list]
+plt.hist(fin, bins=range(12), align="left", color="orange")
+plt.xticks(range(12), possible_points)
 #
-#plt.xlabel("Results")
-#plt.ylabel("Frequency")
-#plt.show()
+plt.xlabel("Results")
+plt.ylabel("Frequency")
+plt.show()
 
 
