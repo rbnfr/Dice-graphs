@@ -9,7 +9,7 @@ from random import randint
 
 class dice:    
     
-    def __init__(self, faces):
+    def __init__(self, faces=6):
         self.faces = faces
         
     def roll(self, faces):
