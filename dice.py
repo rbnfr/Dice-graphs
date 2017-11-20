@@ -18,13 +18,19 @@ def main():
     rolls = 1000
     dice_list = {
         'D6'  : 6, 
-        'D6_2': 6      
+        'D6_2': 3,
+        'D2'  : 2
         }    
 
     # HISTOGRAM RANGE
     min_points = len(dice_list)
+    index = 0
 
     for faces in dice_list.values():
+        if faces < 4:
+            print("Invalid faces at dice "+ str(index))
+            index+=1
+
         max_points += faces
 
     possible_points = range(min_points,max_points+1)
