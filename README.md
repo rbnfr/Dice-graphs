@@ -11,4 +11,4 @@ A simple python script that simulates a number of dice rolls and shows a histogr
 
 * Results frequency
 
-### There is not the same probability for all the results, try and see what happens
+### There is not the same probability for all the results, try, see what happens and think why
