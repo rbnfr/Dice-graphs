@@ -4,34 +4,37 @@ Author: Ruben
 """
 from random import randint
 import matplotlib.pyplot as plt
-import diceController as dice
+import diceController
 
-points = ""
-dices = 3
-faces = 6
-dice_list = [dice(faces) for i in range(1,dices+1)]
+number = diceController.dice.createDice(6)
+print('number')
+print(6+1)
+print(number)
 
 
-for i in range(1,dices+1):
-    dice_list.append(dice(faces))    
+# points = ""
+# dices = 3
+# faces = 6
+# dice_list = [dice(faces) for i in range(1,dices+1)]
 
-possible_points = range(2,faces)
-points_list = []
+# for i in range(1,dices+1):
+#     dice_list.append(dice(faces))    
 
-for i in range(10000):
-    scramble1 = dice.roll(faces)
-    scramble2 = dice.roll(faces)
-    points = scramble1 + scramble2
-    points_list.append(points)
+# possible_points = range(2,faces)
+# points_list = []
+
+# for i in range(10000):
+#     scramble1 = dice.roll(faces)
+#     scramble2 = dice.roll(faces)
+#     points = scramble1 + scramble2
+#     points_list.append(points)
     
-#print (*points_list, sep="-")
+# #print (*points_list, sep="-")
 
-fin = [ possible_points.index(i) for i in points_list]
-plt.hist(fin, bins=range(12), align="left", color="orange")
-plt.xticks(range(12), possible_points)
-#
-plt.xlabel("Results")
-plt.ylabel("Frequency")
-plt.show()
-
-
+# fin = [ possible_points.index(i) for i in points_list]
+# plt.hist(fin, bins=range(12), align="left", color="orange")
+# plt.xticks(range(12), possible_points)
+# #
+# plt.xlabel("Results")
+# plt.ylabel("Frequency")
+# plt.show()

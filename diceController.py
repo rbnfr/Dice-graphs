@@ -4,16 +4,13 @@ Created on Wed Oct 18 00:23:03 2017
 
 @author: RBN
 """
-import diceModel as dice
-
 from random import randint
+import diceModel
 
-class dice:    
-    
-    def __init__(self, faces=6):
-        self.faces = faces
-        
-    def roll(self, faces):
-        dice = dice(faces)
+class dice():      
+    faces = 6
+    def createDice(faces):
+        dice = diceModel.Creator.factory('dice')(faces)
         return dice.roll()
+    
         
