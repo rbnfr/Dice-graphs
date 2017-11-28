@@ -7,10 +7,9 @@ Created on Wed Oct 18 00:23:03 2017
 from random import randint
 import diceModel
 
-class dice():      
+class dice:
     faces = 6
-    def createDice(faces):
-        dice = diceModel.Creator.factory('dice')(faces)
-        return dice.roll()
+    new_dice = dice(faces)
     
-        
+    def roll(faces):
+        return new_dice.roll(faces)
