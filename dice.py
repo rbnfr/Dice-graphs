@@ -2,38 +2,46 @@
 """
 Author: Ruben
 """
-from random import randint
-import matplotlib.pyplot as plt
-import diceController
-faces = 6
-number = diceController.roll(faces)
-print('number')
-print(number)
 
+def main():
+    """ Main method """
+    from random import randint
+    import matplotlib.pyplot as plt
+    import diceController
+    import histController
 
-# points = ""
-# dices = 3
-# faces = 6
-# dice_list = [dice(faces) for i in range(1,dices+1)]
-
-# for i in range(1,dices+1):
-#     dice_list.append(dice(faces))    
-
-# possible_points = range(2,faces)
-# points_list = []
-
-# for i in range(10000):
-#     scramble1 = dice.roll(faces)
-#     scramble2 = dice.roll(faces)
-#     points = scramble1 + scramble2
-#     points_list.append(points)
+    number = diceController.roll(faces)
+    print('number')
+    print(number)
+    # PROGRAM VARIABLES
+    points = 0
+    points_list = []
+    max_points = 0
+ 
+    # USER VARIABLES
+    rolls = 1000
+    dice_list = {
+        'D6'  : 6, 
+        'D6_2': 3,
+        'D2'  : 2
+        }    
+ 
+    # HISTOGRAM RANGE
+    min_points = histController.minPoints(dice_list)
+    max_points = histController.maxPoints(dice_list) 
+    possible_points = range(min_points,max_points+1)
+ 
+    # GET DATA
+    points_list = diceController.doRolls(dice_list, rolls)    
+ 
+    # BUILD GRAPH
+    fin = [possible_points.index(i) for i in points_list]
+    plt.hist(fin, bins=range(max_points), align="left", color="blue", rwidth=0.8)
+    plt.xticks(range(max_points), possible_points)
+ 
+    plt.xlabel("Results")
+    plt.ylabel("Frequency")
+    plt.show()
     
-# #print (*points_list, sep="-")
-
-# fin = [ possible_points.index(i) for i in points_list]
-# plt.hist(fin, bins=range(12), align="left", color="orange")
-# plt.xticks(range(12), possible_points)
-# #
-# plt.xlabel("Results")
-# plt.ylabel("Frequency")
-# plt.show()
+if __name__ == '__main__':
+    main()
