@@ -28,7 +28,7 @@ def main():
 
     for faces in dice_list.values():
         if faces < 4:
-            print("Invalid faces at dice "+ str(index))
+            print("Invalid faces at dice " + str(index) + ", are you a fucking retard?")
             index+=1
 
         max_points += faces
