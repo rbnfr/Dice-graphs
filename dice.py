@@ -5,10 +5,9 @@ Author: Ruben
 from random import randint
 import matplotlib.pyplot as plt
 import diceController
-
-number = diceController.dice.createDice(6)
+faces = 6
+number = diceController.roll(faces)
 print('number')
-print(6+1)
 print(number)
 
 

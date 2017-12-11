@@ -7,11 +7,11 @@ Created on Wed Oct 18 00:23:03 2017
 
 from random import randint
 
-class dice:
-    num_faces = ""
+class dice(object):
+    faces = ""
     def __init__(self, faces):
-        self.num_faces = faces
+        self.faces = faces
 
-    def roll():
-        return randint(1, num_faces)
+    def roll(self):
+        return randint(1, self.faces)
     
