@@ -10,9 +10,6 @@ def main():
     import diceController
     import histController
 
-    number = diceController.roll(faces)
-    print('number')
-    print(number)
     # PROGRAM VARIABLES
     points = 0
     points_list = []
@@ -22,9 +19,8 @@ def main():
     rolls = 1000
     dice_list = {
         'D6'  : 6, 
-        'D6_2': 3,
-        'D2'  : 2
-        }    
+        'D6_2': 6
+        }
  
     # HISTOGRAM RANGE
     min_points = histController.minPoints(dice_list)
@@ -32,7 +28,7 @@ def main():
     possible_points = range(min_points,max_points+1)
  
     # GET DATA
-    points_list = diceController.doRolls(dice_list, rolls)    
+    points_list = diceController.doRolls(dice_list, rolls)
  
     # BUILD GRAPH
     fin = [possible_points.index(i) for i in points_list]
