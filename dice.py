@@ -11,8 +11,8 @@ def main():
     import histController
 
     # PROGRAM VARIABLES
-    points = 0
     points_list = []
+    min_points = 0
     max_points = 0
  
     # USER VARIABLES

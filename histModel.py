@@ -17,7 +17,7 @@ class histogram(object):
         max_points = 0
         for faces in dice_list.values():
             if faces < 4:
-                print("Invalid faces at dice " + str(index) + ", are you a fucking retard?")
+                print("Invalid faces at dice " + str(index+1) + ", are you a fucking retard?")
 
             index+=1
             max_points += faces
