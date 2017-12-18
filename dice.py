@@ -5,7 +5,6 @@ Author: Ruben
 
 def main():
     """ Main method """
-    from random import randint
     import matplotlib.pyplot as plt
     import diceController
     import histController
