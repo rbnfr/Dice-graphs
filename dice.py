@@ -5,7 +5,6 @@ Author: Ruben
 
 def main():
     """ Main method """
-    from random import randint
     import matplotlib.pyplot as plt
     import diceController
     import histController
@@ -14,6 +13,7 @@ def main():
     points_list = []
     min_points = 0
     max_points = 0
+    points_freq = {}
  
     # USER VARIABLES
     rolls = 1000
@@ -29,7 +29,9 @@ def main():
  
     # GET DATA
     points_list = diceController.doRolls(dice_list, rolls)
- 
+    points_freq = diceController.storeFrequency(possible_points, points_list)
+    print(points_freq)
+    
     # BUILD GRAPH
     fin = [possible_points.index(i) for i in points_list]
     plt.hist(fin, bins=range(max_points), align="left", color="blue", rwidth=0.8)

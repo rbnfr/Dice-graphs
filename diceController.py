@@ -13,3 +13,7 @@ def roll(faces):
 def doRolls(dice_list, rolls):
     new_dice = dice()
     return new_dice.doRolls(dice_list, rolls)
+
+def storeFrequency (possible_points, points_list):
+    new_dice = dice()
+    return new_dice.storeFrequency(possible_points, points_list)

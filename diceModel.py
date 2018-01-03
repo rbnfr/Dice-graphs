@@ -24,3 +24,10 @@ class dice(object):
                 points += randint(1, dice)
             points_list.append(points)
         return points_list
+
+    def storeFrequency (self, possible_points, points_list):
+        points_freq = {}
+        for i in possible_points:
+            points_freq[i] = points_list.count(i)
+        return points_freq
+        
