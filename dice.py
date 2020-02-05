@@ -8,6 +8,7 @@ def main():
     import matplotlib.pyplot as plt
     import diceController
     import histController
+    import operator
 
     # PROGRAM VARIABLES
     points_list = []
@@ -39,6 +40,7 @@ def main():
         plt.xlabel("Results")
         plt.ylabel("Frequency")
         print("Frequencies:", points_freq)
+        print("High freq:", max(points_freq.items(), key=operator.itemgetter(1))[0])
         plt.show()
     except (KeyboardInterrupt, SystemExit):
         raise
