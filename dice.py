@@ -24,7 +24,7 @@ def main():
         'D6_2': 6
     }
 
-    try:
+    try: 
         # HISTOGRAM RANGE
         min_points = histController.minPoints(dice_list)
         max_points = histController.maxPoints(dice_list)
