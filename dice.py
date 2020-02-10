@@ -11,6 +11,7 @@ def main():
     import diceController
     import histController
     import operator
+    import pprint
 
     # PROGRAM VARIABLES
     points_list = []
@@ -19,13 +20,15 @@ def main():
     points_freq = {}
     iterations = 10
     sumFreq = 0
+    debugPrint = 1
+    pp = pprint.PrettyPrinter(indent = 4)
 
     # USER VARIABLES
     for i in range(iterations):
         rolls = 10000
         dice_list = {
             'D6'  : 6,
-            'D6_2': 4
+            'D6_2': 6
             }
 
         try:
@@ -45,8 +48,12 @@ def main():
             plt.xlabel("Results")
             plt.ylabel("Frequency")
             highFreq = max(points_freq.items(), key=operator.itemgetter(1))[0]
-            #print("Frequencies:", points_freq)
-            print("High freq:", highFreq)
+            if debugPrint:
+                print("Frequencies:")
+                pp.pprint(points_freq)
+                print("")
+                print("High freq:", highFreq)
+                print("")
             #plt.show()
         except (KeyboardInterrupt, SystemExit):
             raise
