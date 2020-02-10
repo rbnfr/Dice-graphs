@@ -23,14 +23,14 @@ def main():
     debugPrint = 1
     pp = pprint.PrettyPrinter(indent = 4)
 
+    rolls = 10000
+    dice_list = {
+        'D6'  : 6,
+        'D6_2': 6
+        }
+    
     # USER VARIABLES
     for i in range(iterations):
-        rolls = 10000
-        dice_list = {
-            'D6'  : 6,
-            'D6_2': 6
-            }
-
         try:
             # HISTOGRAM RANGE
             min_points = histController.minPoints(dice_list)
@@ -54,7 +54,6 @@ def main():
                 print("")
                 print("High freq:", highFreq)
                 print("")
-            #plt.show()
         except (KeyboardInterrupt, SystemExit):
             raise
         except:
