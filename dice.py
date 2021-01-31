@@ -17,9 +17,8 @@ def main():
     # USER VARIABLES
     rolls = 1000
     dice_list = {
-        'D6'  : 6, 
-        'D6_2': 3,
-        'D2'  : 2
+        'D6'  : 20, 
+        'D6_2': 20
         }    
 
     # HISTOGRAM RANGE
@@ -44,7 +43,20 @@ def main():
 
     # BUILD GRAPH
     fin = [possible_points.index(i) for i in points_list]
-    plt.hist(fin, bins=range(max_points), align="left", color="blue", rwidth=0.8)
+    hist = plt.hist(fin, bins=range(max_points), align="left", color="blue", rwidth=0.8)
+    for i in range(max_points-1):
+        plt.text(
+            x = hist[1][i], 
+            y = hist[0][i], 
+            s = int(hist[0][i]),
+            fontweight = 'bold',
+            backgroundcolor = 'grey',
+            horizontalalignment = 'center'
+
+            )
+
+
+    
     plt.xticks(range(max_points), possible_points)
 
     plt.xlabel("Results")
