@@ -6,20 +6,19 @@ Created on Wed Oct 18 00:23:03 2017
 """
 
 from random import randint
+from dataclasses import dataclass
 
-class dice(object):
-    faces = ""
-    def __init__(self, faces = None):
-        if faces == None:
-            self.faces = 6
+@dataclass(init = True)
+class dice:
+    faces: int = 6
 
-    def roll(self):
+    def roll(self) -> int:
         return randint(1, self.faces)
 
-    def doRolls(self, dice_list, rolls):
+    def doRolls(self, dice_list:list, rolls:int) -> list:
         points_list = []
         for i in range(rolls):
-            points = 0
+            points = 0 
             for dice in dice_list.values():
                 points += randint(1, dice)
             points_list.append(points)
