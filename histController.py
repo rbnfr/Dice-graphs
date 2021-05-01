@@ -10,5 +10,5 @@ def maxPoints(dice_list):
     hist = histogram()
     return hist.maxPoints(dice_list)
 
-def minPoints(dice_list):
+def minPoints(dice_list) -> int:
     return len(dice_list)

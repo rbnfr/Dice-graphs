@@ -20,13 +20,13 @@ def main():
     points_freq = {}
     iterations = 10
     sumFreq = 0
-    debugPrint = 1
+    debugPrint = False
     pp = pprint.PrettyPrinter(indent = 4)
 
     rolls = 10000
     dice_list = {
-        'D6'  : 6,
-        'D6_2': 6
+        'D20'  : 20,
+        'D20_2': 20
         }
     
     # USER VARIABLES
@@ -44,22 +44,22 @@ def main():
             # BUILD GRAPH
             fin = [possible_points.index(i) for i in points_list]
             plt.hist(fin, bins=range(max_points), align="left", color="blue", rwidth=0.8)
-            plt.xticks(range(max_points), possible_points)
+            plt.xticks(range(max_points-1), possible_points)
             plt.xlabel("Results")
             plt.ylabel("Frequency")
             highFreq = max(points_freq.items(), key=operator.itemgetter(1))[0]
-            if debugPrint:
-                print("Frequencies:")
-                pp.pprint(points_freq)
-                print("")
-                print("High freq:", highFreq)
-                print("")
+            sumFreq += highFreq
+            
         except (KeyboardInterrupt, SystemExit):
             raise
-        except:
-            print("I refuse to work in this conditions.")
-            
-        sumFreq += highFreq
+    
+    if debugPrint:
+        print("Frequencies:")
+        pp.pprint(points_freq)
+        print("")
+        print("High freq:", highFreq)
+        print("")
+        
         
     plt.show()    
     averageFreq = (sumFreq/iterations)

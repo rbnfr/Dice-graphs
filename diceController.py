@@ -6,11 +6,11 @@ Created on Wed Oct 18 00:23:03 2017
 """
 from diceModel import dice
 
-def roll(faces):
+def roll(faces:int) -> int:
     new_dice = dice(faces)
     return new_dice.roll()
 
-def doRolls(dice_list, rolls):
+def doRolls(dice_list:list, rolls:int):
     new_dice = dice()
     return new_dice.doRolls(dice_list, rolls)
 

@@ -5,14 +5,14 @@ Created on Wed Oct 18 00:23:03 2017
 @author: RBN
 """
 
+from operator import truediv
 from random import randint
+from dataclasses import dataclass
 
-class histogram(object):
-    hello = "hello"
-    def __init__(self):
-        self.hello = "Hello"              
+@dataclass(init = True)
+class histogram(object):          
 
-    def maxPoints(self, dice_list):
+    def maxPoints(self, dice_list) -> int:
         index = 0
         max_points = 0
         for faces in dice_list.values():
