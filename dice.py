@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """
 Author: Ruben
 """
@@ -6,62 +7,63 @@ Author: Ruben
 
 def main():
     """ Main method """
-    from random import randint
     import matplotlib.pyplot as plt
+    import diceController
+    import histController
+    import operator
+    import pprint
 
     # PROGRAM VARIABLES
-    points = 0
     points_list = []
+    min_points = 0
     max_points = 0
+    points_freq = {}
+    iterations = 10
+    sumFreq = 0
+    debugPrint = 1
+    pp = pprint.PrettyPrinter(indent = 4)
 
-    # USER VARIABLES
-    rolls = 1000
+    rolls = 10000
     dice_list = {
-        'D6'  : 20, 
-        'D6_2': 20
-        }    
-
-    # HISTOGRAM RANGE
-    min_points = len(dice_list)
-    index = 0
-
-    for faces in dice_list.values():
-        if faces < 4:
-            print("Invalid faces at dice " + str(index) + ", are you a fucking retard?")
-            index+=1
-
-        max_points += faces
-
-    possible_points = range(min_points,max_points+1)
-
-    # GET DATA
-    for i in range(rolls):
-        points = 0
-        for dice in dice_list.values():
-            points += randint(1, dice)
-        points_list.append(points)    
-
-    # BUILD GRAPH
-    fin = [possible_points.index(i) for i in points_list]
-    hist = plt.hist(fin, bins=range(max_points), align="left", color="blue", rwidth=0.8)
-    for i in range(max_points-1):
-        plt.text(
-            x = hist[1][i], 
-            y = hist[0][i], 
-            s = int(hist[0][i]),
-            fontweight = 'bold',
-            backgroundcolor = 'grey',
-            horizontalalignment = 'center'
-
-            )
-
-
+        'D6'  : 6,
+        'D6_2': 6
+        }
     
-    plt.xticks(range(max_points), possible_points)
-
-    plt.xlabel("Results")
-    plt.ylabel("Frequency")
-    plt.show()
+    # USER VARIABLES
+    for i in range(iterations):
+        try:
+            # HISTOGRAM RANGE
+            min_points = histController.minPoints(dice_list)
+            max_points = histController.maxPoints(dice_list)
+            possible_points = range(min_points, max_points + 1)
     
+            # GET DATA
+            points_list = diceController.doRolls(dice_list, rolls)
+            points_freq = diceController.storeFrequency(possible_points, points_list)
+    
+            # BUILD GRAPH
+            fin = [possible_points.index(i) for i in points_list]
+            plt.hist(fin, bins=range(max_points), align="left", color="blue", rwidth=0.8)
+            plt.xticks(range(max_points), possible_points)
+            plt.xlabel("Results")
+            plt.ylabel("Frequency")
+            highFreq = max(points_freq.items(), key=operator.itemgetter(1))[0]
+            if debugPrint:
+                print("Frequencies:")
+                pp.pprint(points_freq)
+                print("")
+                print("High freq:", highFreq)
+                print("")
+        except (KeyboardInterrupt, SystemExit):
+            raise
+        except:
+            print("I refuse to work in this conditions.")
+            
+        sumFreq += highFreq
+        
+    plt.show()    
+    averageFreq = (sumFreq/iterations)
+    print("Average Freq:", averageFreq)
+
 if __name__ == '__main__':
     main()

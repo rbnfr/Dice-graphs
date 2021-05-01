@@ -1,14 +1,6 @@
-# Dice roll simulator
+# Dice graphs
+Python script that simulates a given number of rolls with a given set of dices (default is two standard six-faced dices).
+After the simulation, shows a histogram with the frequency of the results.
 
-A simple python script that simulates a number of dice rolls and shows a histogram presenting the frequency of the results.
-
-## Input
-
-* Faces of the dices
-* Number of dice rolls
-
-## Output
-
-* Results frequency
-
-### There is not the same probability for all the results, try, see what happens and think why
+## MVC
+Refactor to adjust to MVC pattern.
